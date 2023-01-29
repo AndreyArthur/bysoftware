@@ -1,0 +1,17 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "compiler.js",
+  "devDependencies": {},
+  "scripts": {
+    "compile": "node ./compiler.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "showdown": "^2.1.0"
+  }
+}
