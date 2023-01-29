@@ -32,10 +32,10 @@ const fileSystem = {
     return result;
   },
   pwd: (...sequencePaths) => {
-    return path.resolve(__dirname, ...sequencePaths); 
+    return path.resolve(__dirname, ...sequencePaths);
   },
   readdir: async (path) => {
-    const result = await fs.readdir(path); 
+    const result = await fs.readdir(path);
     return result;
   },
 };
@@ -62,7 +62,7 @@ const makeMarkdownConverter = () => {
 
 const getDateConcatenation = (date) => {
   const forceLength = (text, length) => {
-    let stringified = text; 
+    let stringified = text;
     if (typeof text !== 'string') {
       stringified = text.toString();
     }
@@ -75,7 +75,7 @@ const getDateConcatenation = (date) => {
       stringified = stringifiedArr.join('');
     }
     return stringified;
-  } 
+  }
 
   const dateConcatenation = `${
     forceLength(date.getFullYear(), 4)
@@ -98,7 +98,7 @@ const createHomePage = async () => {
   for (let index = 0; index < postsFolderNames.length; index++) {
     const data = JSON.parse(await fileSystem.readFile(
       fileSystem.pwd('posts', postsFolderNames[index], 'metadata.json')
-    )); 
+    ));
     postsData.push({ ...data, id: postsFolderNames[index] })
   }
   postsData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -122,7 +122,7 @@ const createHomePage = async () => {
     <!DOCTYPE html>
     <html class="h-full">
       <head>
-        <title>Bloated - Home</title>
+        <title>BySoftware - Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="${description}">
@@ -132,7 +132,7 @@ const createHomePage = async () => {
       <body class="h-full">
         <header class="bg-${color}-900 h-fit w-full flex items-center sticky top-0">
           <a href="./index.html" class="p-3">
-            <h2 class="w-fit text-2xl font-medium text-${color}-50 rounded-md transition duration-300 ml-2 p-1 hover:bg-${color}-50 hover:text-${color}-900">Bloated</h2>
+            <h2 class="w-fit text-2xl font-medium text-${color}-50 rounded-md transition duration-300 ml-2 p-1 hover:bg-${color}-50 hover:text-${color}-900">BySoftware</h2>
           </a>
         </header>
         <main class="bg-${color}-800 h-full flex flex-col items-center">
@@ -163,7 +163,7 @@ const createNewPost = async () => {
     <!DOCTYPE html>
     <html class="h-full">
       <head>
-        <title>Bloated - ${metadata.title}</title>
+        <title>BySoftware - ${metadata.title}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="${metadata.description}">
@@ -173,7 +173,7 @@ const createNewPost = async () => {
       <body class="h-full">
         <header class="bg-${color}-900 h-fit w-full flex items-center sticky top-0">
           <a href="../../index.html" class="p-3">
-            <h2 class="w-fit text-2xl font-medium text-${color}-50 rounded-md transition duration-300 ml-2 p-1 hover:bg-${color}-50 hover:text-${color}-900">Bloated</h2>
+            <h2 class="w-fit text-2xl font-medium text-${color}-50 rounded-md transition duration-300 ml-2 p-1 hover:bg-${color}-50 hover:text-${color}-900">BySoftware</h2>
           </a>
         </header>
         <main class="bg-${color}-800 h-full flex justify-center">
@@ -190,7 +190,7 @@ const createNewPost = async () => {
   metadata.date = date.toISOString();
   if (!fileSystem.exists(fileSystem.pwd('posts'))) {
     await fileSystem.mkdir(fileSystem.pwd('posts'));
-  } 
+  }
   const folderName = `${dateConcatenation}_${metadata.slug}`;
   await fileSystem.mkdir(fileSystem.pwd('posts', folderName));
   await fileSystem.writeFile(fileSystem.pwd('posts', folderName, 'index.html'), finalHtml);
@@ -205,8 +205,8 @@ const main = async () => {
     await createHomePage();
     return;
   }
-  await createHomePage();
   await createNewPost();
+  await createHomePage();
 };
 
 main();
