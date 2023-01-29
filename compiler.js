@@ -176,8 +176,8 @@ const createNewPost = async () => {
             <h2 class="w-fit text-2xl font-medium text-${color}-50 rounded-md transition duration-300 ml-2 p-1 hover:bg-${color}-50 hover:text-${color}-900">BySoftware</h2>
           </a>
         </header>
-        <main class="bg-${color}-800 h-full flex justify-center">
-          <div class="bg-${color}-900/75 h-full xl:w-[67.5rem] w-[45rem] p-4">
+        <main class="bg-${color}-800 min-h-full flex justify-center">
+          <div class="bg-${color}-900/75 min-h-full xl:w-[67.5rem] w-[45rem] p-4">
           ${html}
           </div>
         </main>
