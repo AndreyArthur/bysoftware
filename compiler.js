@@ -105,11 +105,11 @@ const createHomePage = async () => {
   let postsHtml = ``;
   for (let index = 0; index < postsData.length; index++) {
     postsHtml += `
-      <a href="./posts/${postsData[index].id}/index.html" class="bg-${color}-900/75 h-fit xl:w-[67.5rem] w-[45rem] p-4 m-4">
-        <div>
-          <h2 class="md:text-2xl text-xl text-${color}-50 font-medium mb-2">${postsData[index].title}</h2>
-          <p class="text-sm md:text-base text-${color}-50 mb-4">${postsData[index].description}</p>
-          <p class="text-sm md:text-base text-${color}-400">${format(new Date(postsData[index].date), 'dd \'de\' MMMM \'de\' yyyy', { locale: ptBR })} | #${postsData[index].tags.join(' #')}</p>
+      <a href="./posts/${postsData[index].id}/index.html" class="block bg-${color}-900 h-fit xl:w-[67.5rem] w-full my-2 p-4">
+        <div class="max-w-full">
+          <h2 class="md:text-2xl text-xl text-${color}-50 font-medium mb-2 max-w-full">${postsData[index].title}</h2>
+          <p class="text-sm md:text-base text-${color}-50 mb-4 max-w-full">${postsData[index].description}</p>
+          <p class="text-sm md:text-base text-${color}-400 max-w-full">${format(new Date(postsData[index].date), 'dd \'de\' MMMM \'de\' yyyy', { locale: ptBR })} | #${postsData[index].tags.join(' #')}</p>
         </div>
       </a>
     `;
@@ -135,7 +135,7 @@ const createHomePage = async () => {
             <h2 class="w-fit text-2xl font-medium text-${color}-50 rounded-md transition duration-300 ml-2 p-1 hover:bg-${color}-50 hover:text-${color}-900">BySoftware</h2>
           </a>
         </header>
-        <main class="bg-${color}-800 h-full flex flex-col items-center">
+        <main class="bg-${color}-800 h-full flex flex-col items-center w-full p-4">
           ${postsHtml}
         </main>
         <footer class="bg-${color}-900 h-fit w-full flex items-center justify-center">
